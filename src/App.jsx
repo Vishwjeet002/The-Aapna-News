@@ -18,7 +18,7 @@ import MainHeading from './component/MainHeading/MainHeading';
 function App() {
   return (
     <Router>
-       {/* Conditionally render Header and MainHeading only on Home page */}
+      
        {location.pathname === '/' && (
         <>
           <Header />

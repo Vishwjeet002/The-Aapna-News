@@ -1,6 +1,6 @@
 .Header {
     display: flex;
-    justify-content: space-between; /* left and right push to edges */
+    justify-content: space-between; 
     align-items: center;
   
     
