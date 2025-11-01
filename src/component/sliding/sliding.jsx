@@ -5,7 +5,7 @@ const Sliding = () => {
   const [articles, setArticles] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Fetch data from your backend proxy instead of directly from NewsAPI
+  
   useEffect(() => {
     fetch('/api/news')
       .then(response => response.json())
@@ -21,12 +21,12 @@ const Sliding = () => {
       });
   }, []);
 
-  // Auto-slide every 5 seconds
+  
   useEffect(() => {
     if (articles.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % articles.length);
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
   }, [articles]);
 
@@ -39,7 +39,7 @@ const Sliding = () => {
   };
 
   if (articles.length === 0) {
-    return <div>Loading...</div>;
+    return <div>Loading please wait //// - The Aapna Newa...</div>;
   }
 
   const currentArticle = articles[currentIndex];
@@ -57,10 +57,7 @@ const Sliding = () => {
         <h3>{currentArticle.title}</h3>
         <p>{currentArticle.description}</p>
 
-        <div className="controls">
-          <button onClick={handlePrev}>⟨ Prev</button>
-          <button onClick={handleNext}>Next ⟩</button>
-        </div>
+       
       </div>
     </div>
   );
