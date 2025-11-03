@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function മലയാളം() {
+function മലയാളം() {
   return (
     <div>മലയാളം</div>
   )
 }
+
+export default മലയാളം
