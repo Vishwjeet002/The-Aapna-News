@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function ગુજરાતી() {
+function ગુજરાતી() {
   return (
     <div>ગુજરાતી</div>
   )
 }
+
+export default ગુજરાતી
