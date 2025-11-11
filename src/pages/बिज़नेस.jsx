@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function बिज़नेस() {
+const बिज़नेस = () => {
   return (
-    <div> Working ON IT </div>
+    <div>बिज़नेस</div>
   )
 }
+
+export default बिज़नेस

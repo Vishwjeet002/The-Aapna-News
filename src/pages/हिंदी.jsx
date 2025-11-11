@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function हिंदी() {
+const हिंदी = () => {
   return (
     <div>हिंदी</div>
   )
 }
+
+export default हिंदी
