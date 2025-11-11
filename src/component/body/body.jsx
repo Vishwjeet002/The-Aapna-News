@@ -6,6 +6,7 @@ function Body() {
   return (
     <>
     <Sliding/>
+    <h1>All Latest News !</h1>
     </>
   )
 }
