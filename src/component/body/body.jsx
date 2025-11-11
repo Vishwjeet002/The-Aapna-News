@@ -7,6 +7,7 @@ function Body() {
     <>
     <Sliding/>
     <h1>All Latest News !</h1>
+    <p> Check All Videos Here </p>
     </>
   )
 }
