@@ -39,8 +39,16 @@ const Sliding = () => {
   };
 
   if (articles.length === 0) {
-    return <div>Loading please wait //// - The Aapna Newa...</div>;
-  }
+  return (
+    <div className="slider-container">
+      <div className="slider">
+        <div className="image-container" style={{ background: "#222", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <h2 style={{ color: "white", fontSize: "20px" }}>Loading please wait //// - The Aapna Newa...</h2>
+        </div>
+      </div>
+    </div>
+  );
+}
 
   const currentArticle = articles[currentIndex];
   const imageUrl = currentArticle.urlToImage || 'https://via.placeholder.com/600x300';
