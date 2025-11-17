@@ -1,9 +1,9 @@
 import React from 'react';
-import './cards.css';
+import './Cards.css';
 
 const PLACEHOLDER = 'https://via.placeholder.com/400x220?text=No+Image';
 
-export default function card({ article }) {
+export default function Cards({ article }) {
   if (!article) return null;
 
   const {
