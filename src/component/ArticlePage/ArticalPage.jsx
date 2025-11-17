@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cards from '../cards/cards';
-import './ArticalPage.css'; // ensure this file exists and is imported
+import './ArticalPage.css';
 
 export default function ArticalPage() {
   const [articles, setArticles] = useState([]);
@@ -32,8 +32,10 @@ export default function ArticalPage() {
   // Loading state: keep grid container + fixed height so layout doesn't shift
   if (loading) {
     return (
-      <div className="news-grid fixed-grid-loading">
-        <div className="loading-placeholder">Loading news...</div>
+      <div className="page-container">
+        <div className="news-grid fixed-grid-loading">
+          <div className="loading-placeholder">Loading news...</div>
+        </div>
       </div>
     );
   }
@@ -41,18 +43,50 @@ export default function ArticalPage() {
   // After loading: no articles
   if (!articles.length) {
     return (
-      <div className="news-grid empty-grid">
-        <div className="empty-placeholder">No articles found.</div>
+      <div className="page-container">
+        <div className="news-grid empty-grid">
+          <div className="empty-placeholder">No articles found.</div>
+        </div>
       </div>
     );
   }
 
-  // When we have articles: render the grid of cards
+  // Split articles into different sections:
+  const featured = articles.slice(0, 5);       // top 5
+  const secondary = articles.slice(5, 14);     // next 9 (3x3)
+  const rest = articles.slice(14);             // remaining
+
   return (
-    <div className="news-grid">
-      {articles.map((article, idx) => (
-        <Cards key={article.url || idx} article={article} />
-      ))}
+    <div className="page-container">
+      {/* Featured — big row (5 across on desktop) */}
+      <section className="section featured-section">
+        <h2 className="section-title">Top Stories</h2>
+        <div className="featured-grid">
+          {featured.map((article, idx) => (
+            <Cards key={article.url || `featured-${idx}`} article={article} />
+          ))}
+        </div>
+      </section>
+
+      {/* Secondary — 3-column grid */}
+      <section className="section secondary-section">
+        <h2 className="section-title">Latest</h2>
+        <div className="secondary-grid">
+          {secondary.map((article, idx) => (
+            <Cards key={article.url || `sec-${idx}`} article={article} />
+          ))}
+        </div>
+      </section>
+
+      {/* Rest — responsive grid */}
+      <section className="section rest-section">
+        <h2 className="section-title">More News</h2>
+        <div className="rest-grid">
+          {rest.map((article, idx) => (
+            <Cards key={article.url || `rest-${idx}`} article={article} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
