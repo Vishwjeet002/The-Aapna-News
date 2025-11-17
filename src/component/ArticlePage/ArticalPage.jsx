@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Cards from '../cards/cards';
+import Cards from './Cards/Cards';
 import './ArticalPage.css';
 
 export default function ArticalPage() {
