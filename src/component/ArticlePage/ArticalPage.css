@@ -1,66 +1,112 @@
-/* Grid layout: 5 columns desktop, 3 medium, 2 tablet, 1 mobile */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 cards in one row on wide screens */
-  gap: 18px;
-  padding: 20px;
-  align-items: start;
-  /* optional min-height for when cards exist - but loading uses fixed-grid-loading */
+/* page container */
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 18px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
-/* Fixed height placeholder while loading */
+/* section titles */
+.section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 20px;
+  margin: 10px 6px 16px;
+  color: #111;
+  font-weight: 700;
+}
+
+/* --------------------
+   Featured grid (5 in a row)
+   -------------------- */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* For smaller screens, scale down to 3,2,1 */
+@media (max-width: 1200px) {
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------
+   Secondary grid (3 columns)
+   -------------------- */
+.secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .secondary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .secondary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------
+   Rest grid (auto-fill responsive)
+   -------------------- */
+.rest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* --------------------
+   Fixed loading and empty states
+   -------------------- */
 .fixed-grid-loading {
-  min-height: 600px; /* adjust to match card heights; prevents layout shift */
+  min-height: 520px; /* reserve space similar to the expected content height */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #111;
-  border-radius: 8px;
+  background: #fafafa;
+  border-radius: 6px;
   padding: 20px;
   box-sizing: border-box;
 }
 
 .loading-placeholder {
-  color: #fff;
-  font-size: 20px;
+  color: #333;
+  font-size: 18px;
   opacity: 0.9;
 }
 
-/* Empty placeholder styling */
 .empty-grid {
   min-height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
 }
-
 .empty-placeholder {
-  color: #444;
-  font-size: 18px;
+  color: #666;
 }
 
-/* Medium screens: 3 cards per row */
-@media (max-width: 1200px) {
-  .news-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* small visual polish so cards align nicely with spacing */
+.section .news-card {
+  height: 100%;
 }
 
-
-@media (max-width: 768px) {
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile: 1 card per row */
-@media (max-width: 500px) {
-  .news-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .fixed-grid-loading {
-    min-height: 360px; /* smaller on mobile */
-  }
-}
+/* you can tweak spacing/padding to fit your Cards component size */
